@@ -2,6 +2,7 @@ let number = "0";
 let ans = 0;
 let is_first = true;
 let operator = "";
+
 rerender();
 $("#btn-0").click(() => {
   number += "0";
@@ -44,17 +45,16 @@ $("#btn-9").click(() => {
   rerender();
 });
 $("#btn-point").click(() => {
-   if ( number.indexOf(".")==-1){
+  if (number.indexOf(".") == -1) {
     number += ".";
-  ans=parseFloat(number)
-   } 
-  
+    ans = parseFloat(number);
+  }
+
   rerender();
 });
 $("#btn-ac").click(() => {
   number = "0";
-    ans=parseFloat(number)
-  
+  ans = parseFloat(number);
 
   rerender();
 });
@@ -65,7 +65,8 @@ $("#btn-plus").click(() => {
     number = "0";
   } else {
     ans = parseFloat(number);
-    number = "0";
+    temp=ans
+    number = "0"
     rerender();
   }
   operator = "+";
@@ -76,7 +77,9 @@ $("#btn-dec").click(() => {
     number = "0";
   } else {
     ans = parseFloat(number);
-    number = "0";
+    temp=ans
+    number = "0"
+    console.log(ans)
     rerender();
   }
 
@@ -88,8 +91,8 @@ $("#btn-div").click(() => {
     number = "0";
   } else {
     ans = parseFloat(number);
-    number = "0";
-
+    temp=ans
+    number = "0"
     rerender();
   }
   operator = "/";
@@ -101,25 +104,23 @@ $("#btn-mul").click(() => {
     number = "0";
   } else {
     ans = parseFloat(number);
-    number = "0";
-
+    temp=ans
+    number = "0"
     rerender();
   }
   operator = "*";
 });
 $("#btn-del").click(() => {
-    if (number !='0') {
-        temp=ans
-    number=temp.toString()
-  number = number.slice(0,-1);
-  ans=parseFloat(number)
-  console.log(number)
-  console.log(ans)
-  
+  if (number != "0") {
+    temp = ans;
+    number = temp.toString();
+    number = number.slice(0, -1);
+    ans = parseFloat(number);
+    console.log(number);
+    console.log(ans);
 
-  rerender();
-      }
-    
+    rerender();
+  }
 });
 $("#btn-equal").click(() => {
   cal(operator);
@@ -138,10 +139,13 @@ function cal(s) {
   number = ans.toString();
 
   ans = parseFloat(ans);
-  
+  console.log(ans)
+
   rerender();
 }
+
 function rerender() {
+    console.log(ans)
   while (number[0] == "0" && number.length > 1) {
     number = number.substring(1);
   }
