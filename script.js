@@ -143,5 +143,7 @@ function rerender(){
     while (number[0]=="0" && number.length>1){
         number=number.substring(1)
     }
-    document.getElementById('output').innerText = number
+    temp=parseFloat(number)
+    temp.toString()
+    document.getElementById('output').innerText = temp
 }
