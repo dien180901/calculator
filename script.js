@@ -52,10 +52,9 @@ $("#btn-point").click(() => {
   rerender();
 });
 $("#btn-ac").click(() => {
-  if (number) {
-    number = "0";
+  number = "0";
     ans=parseFloat(number)
-  }
+  
 
   rerender();
 });
@@ -109,15 +108,18 @@ $("#btn-mul").click(() => {
   operator = "*";
 });
 $("#btn-del").click(() => {
-  number = number.substring(1);
+    if (number !='0') {
+        temp=ans
+    number=temp.toString()
+  number = number.slice(0,-1);
   ans=parseFloat(number)
-
-  if (number == "") {
-    number = "0";
-
-  }
+  console.log(number)
+  console.log(ans)
+  
 
   rerender();
+      }
+    
 });
 $("#btn-equal").click(() => {
   cal(operator);
