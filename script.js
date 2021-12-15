@@ -152,13 +152,11 @@ $("#btn-plus").click(() => {
 		is_click_operator = true;
 		disabled_button(operators_id["+"]);
 	} else {
-		if (operator == "+") {
-      temp=ans
+		temp=ans
       number=ans.toString()
 			is_click_operator = false;
 			operator = "";
 			remove_disabled_button(operators_id["+"]);
-		}
 	}
 });
 $("#btn-dec").click(() => {
@@ -178,13 +176,11 @@ $("#btn-dec").click(() => {
 		disabled_button(operators_id["-"]);
 	} else {
     
-		if (operator == "-") {
-      temp=ans
+		temp=ans
       number=ans.toString()
 			is_click_operator = false;
 			operator = "";
 			remove_disabled_button(operators_id["-"]);
-		}
 	}
 });
 $("#btn-div").click(() => {
@@ -205,14 +201,11 @@ $("#btn-div").click(() => {
 		disabled_button(operators_id["/"]);
 	} else {
     
-    
-		if (operator == "/") {
-      temp=ans
+    temp=ans
     number=ans.toString()
 			is_click_operator = false;
 			operator = "";
 			remove_disabled_button(operators_id["/"]);
-		}
 	}
 });
 $("#btn-mul").click(() => {
@@ -232,13 +225,11 @@ $("#btn-mul").click(() => {
 		disabled_button(operators_id["*"]);
 	} else {
 		remove_disabled_button(operators_id["*"]);
-		if (operator == "*") {
-      temp=ans
+    temp=ans
     number=ans.toString()
 			is_click_operator = false;
 			operator = "";
 			remove_disabled_button(operators_id["*"]);
-		}
 	}
 });
 $("#btn-del").click(() => {
@@ -247,8 +238,10 @@ $("#btn-del").click(() => {
 		number = number.slice(0, -1);
 		rerender();
 		remove_disabled_button(operator);
-	}else if (number==""){
+	}
+   if (number==""){
     number="0"
+    rerender()
   }
 });
 $("#btn-equal").click(() => {
@@ -263,7 +256,7 @@ function cal(s) {
 		ans = ans - parseFloat(number);
 	} else if (s == "*") {
 		ans = ans * parseFloat(number);
-	} else {
+	} else if (s == "/") {
 		ans = ans / parseFloat(number);
 	}
 	number = ans.toString();
